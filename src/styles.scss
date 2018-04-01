@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$bnea-primary: map-merge($mat-blue, (
+  50: #e3672a,
+  100: #e3672a,
+  200: #e3672a,
+  300: #e3672a,
+  400: #e3672a,
+  500: #e3672a,
+  600: #e3672a,
+  700: #e3672a,
+  800: #e3672a,
+  900: #e3672a,
+  A100: #e3672a,
+  A200: #e3672a,
+  A400: #e3672a,
+  A700: #e3672a
+));
+
+$bnea-accent: map-merge($mat-blue, (
+  50: #d8232a,
+  100: #d8232a,
+  200: #d8232a,
+  300: #d8232a,
+  400: #d8232a,
+  500: #d8232a,
+  600: #d8232a,
+  700: #d8232a,
+  800: #d8232a,
+  900: #d8232a,
+  A100: #d8232a,
+  A200: #d8232a,
+  A400: #d8232a,
+  A700: #d8232a
+));
+
+// Define a theme.
+$primary: mat-palette($bnea-primary);
+$accent: mat-palette($bnea-accent, A200, A100, A400);
+
+$theme: mat-light-theme($primary, $accent);
+
+// Include all theme styles for the components.
+@include angular-material-theme($theme);
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #fafafa;
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}

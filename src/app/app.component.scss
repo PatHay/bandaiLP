@@ -1,0 +1,118 @@
+@import '~@angular/material/theming';
+
+$config: mat-typography-config();
+$signup-width: 384px;
+
+@mixin cover-fade {
+    &::before{
+        background: rgba(0,0,0,0.5);
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+    }
+}
+
+:host {
+    display: flex;
+    min-height: 100vh;
+}
+
+.content{
+    position: relative;
+    flex: 1;
+}
+
+.content-nav{
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+    padding: 8px 16px;
+    z-index: 1;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    h1{
+        @include mat-typography-level-to-styles($config, button);
+        position: relative;
+        padding: 0 32px 0 16px;
+        margin: 0;
+
+        &:before{
+            background: #e3672a;
+            content: '';
+            position: absolute;
+            top: -32px;
+            right: 8px;
+            bottom: -32px;
+            left: -900px;
+            z-index: -1;
+            transform: skewX(-45deg);
+        }
+    }
+}
+
+.content-header{
+    @include cover-fade;
+    background: url(https://cdn-cms.bnea.io/sites/default/files/games/cover-small-desktop/cover-small-desktop_101.jpg) center top;
+    background-size: cover;
+    position: relative;
+    padding-bottom: 56.25%;
+}
+
+.content-header-video{
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+
+    iframe,
+    video{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: auto;
+        height: auto;
+        min-width: 100%;
+        min-height: 100%;
+        max-width: 100%;
+        transform: translate3d(-50%, -50%, 0);
+    }
+}
+
+.content-header-content{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+    margin-left: 56px;
+    width: 320px;
+    transform: translate3d(0, -50%, 0);
+
+    h1{
+        color: #fff;
+    }
+
+    p{
+        color: rgba(255,255,255,0.65);
+    }
+
+}
+
+.content-wrapper{
+    overflow: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    top: 52px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
