@@ -17,10 +17,118 @@
       <div class="content-header-content">
         <h1 class="mat-headline">True Power Knows No Limits!</h1>
         <p class="mat-body-1">
-          After the success of the Xenoverse series, it's time to introduce a new classic 2D DRAGON BALL 
-          fighting game for this generation's consoles.
+          After the success of the Xenoverse series, it's time to introduce a new classic 2D DRAGON BALL fighting game for this generation's
+          consoles.
         </p>
       </div>
     </header>
+
+    <section class="content-features" id="features">
+      <mat-grid-list cols="8" rowHeight="96px" gutterSize="8px">
+        <mat-grid-tile *ngFor="let feature of features" [colspan]="feature.cols" [rowspan]="feature.rows">
+          <div class="content-features-image" [style.backgroundImage]="'url(' + feature.image + ')'"></div>
+          <div class="content-features-content">
+            <h1 class="mat-subheading-1">{{ feature.title }}</h1>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </section>
+
+    <section class="content-requirements" id="specs">
+      <mat-table #table [dataSource]="requirements">
+        <ng-container matColumnDef="label">
+          <mat-header-cell *matHeaderCellDef>&nbsp;</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.label }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="min">
+          <mat-header-cell *matHeaderCellDef>Minimum System Requirements</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.min }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="rec">
+          <mat-header-cell *matHeaderCellDef>Recommended System Requirements</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.rec || element.min }}</mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="requirementColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: requirementColumns;"></mat-row>
+      </mat-table>
+    </section>
+    <footer class="content-footer">
+      <div class="content-footer-copy mat-caption-1">
+        &copy; 2018 BANDAI NAMCO Entertainment America Inc. All Rights Reserved.
+      </div>
+    </footer>
   </div>
 </section>
+<aside class="signup">
+  <header class="signup-header">
+    <img src = "/assets/bnea-logo.svg" alt="BANDAI NAMCO Entertainment America">
+  </header>
+  <section class="signup-quote">
+    Join the next generation of entertainment.
+  </section>
+  <form class="signup-form" [formGroup]="registerForm" novalidate>
+    <mat-form-field>
+      <input matInput formControlName="email" type="email" placeholder="Email Address">
+      <mat-error *ngIf="registerForm.get('email').invalid">
+        Your Email Address is invalid.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" maxlength="16" placeholder="Password">
+      <mat-icon matSuffix (click)="hide = !hide">
+        {{ hide ? 'visibility' : 'visibility_off' }}
+      </mat-icon>
+      <mat-error *ngIf="registerForm.get('password').invalid">
+        Your Password must be between 8 and 16 characters.
+      </mat-error>
+    </mat-form-field>
+    <div class="signup-birthdate">
+      <mat-form-field>
+        <mat-select placeholder="Date of Birth" formControlName="birthdate_month">
+          <mat-option [value]="1">January</mat-option>
+          <mat-option [value]="2">February</mat-option>
+          <mat-option [value]="3">March</mat-option>
+          <mat-option [value]="4">April</mat-option>
+          <mat-option [value]="5">May</mat-option>
+          <mat-option [value]="6">June</mat-option>
+          <mat-option [value]="7">July</mat-option>
+          <mat-option [value]="8">August</mat-option>
+          <mat-option [value]="9">September</mat-option>
+          <mat-option [value]="10">October</mat-option>
+          <mat-option [value]="11">November</mat-option>
+          <mat-option [value]="12">December</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field floatLabel="never">
+        <mat-select placeholder="Day" formControlName="birthdate_day">
+          <ng-template ngFor let-day [ngForOf]="days">
+            <mat-option [value]="day">
+              {{ day }}
+            </mat-option>
+          </ng-template>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field floatLabel="never">
+        <mat-select placeholder="Year" formControlName="birthdate_year">
+          <ng-template ngFor let-year [ngForOf]="years">
+            <mat-option [value]="year">
+              {{ year }}
+            </mat-option>
+          </ng-template>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-checkbox formControlName="subscriptions">
+      Send me news, updates and special offers
+    </mat-checkbox>
+    <div class="spaer-flex"></div>
+    <button mat-raised-button color="primary" [disabled]="registerForm.invalid">
+      Play for Free
+    </button>
+  </form>
+  <footer class="signup-footer">
+    By clicking "Play for Free" you are agreeing to the <br>
+    <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.
+  </footer>
+</aside>
