@@ -9,22 +9,18 @@
   </nav>
   <div class="content-wrapper">
     <header class="content-header" id="trailer">
-      <div class="content-header-video" *ngIf="showVideo">
-        <video autoplay loop>
-          <source src="https://bnea.akamaized.net/movies/CorpWeb/dbfightz1_h264_custom_sl1.mp4">
-        </video>
-      </div>
       <div class="content-header-content">
-        <h1 class="mat-headline">True Power Knows No Limits!</h1>
+        <h1 class="mat-headline">Now Only Embers Remain</h1>
         <p class="mat-body-1">
-          After the success of the Xenoverse series, it's time to introduce a new classic 2D DRAGON BALL fighting game for this generation's
-          consoles.
+            As fires fade and the world falls into ruin, developer FROMSOFTWARE and director Hidetaka Miyazaki 
+            continue their critically-acclaimed and genre-defining series with DARK SOULS III. Fans and newcomers alike 
+            will get lost in the games hallmark rewarding gameplay and immersive graphics. Now only embers remain...
         </p>
       </div>
     </header>
 
     <section class="content-features" id="features">
-      <mat-grid-list cols="8" rowHeight="96px" gutterSize="8px">
+      <mat-grid-list cols="12" rowHeight="96px" gutterSize="8px">
         <mat-grid-tile *ngFor="let feature of features" [colspan]="feature.cols" [rowspan]="feature.rows">
           <div class="content-features-image" [style.backgroundImage]="'url(' + feature.image + ')'"></div>
           <div class="content-features-content">
@@ -59,9 +55,12 @@
     </footer>
   </div>
 </section>
+
+<!-- side bar registration code below -->
+
 <aside class="signup">
   <header class="signup-header">
-    <img src = "/assets/bnea-logo.svg" alt="BANDAI NAMCO Entertainment America">
+    <img src = "../assets/bnea-logo.svg" alt="BANDAI NAMCO Entertainment America">
   </header>
   <section class="signup-quote">
     Join the next generation of entertainment.
@@ -70,7 +69,7 @@
     <mat-form-field>
       <input matInput formControlName="email" type="email" placeholder="Email Address">
       <mat-error *ngIf="registerForm.get('email').invalid">
-        Your Email Address is invalid.
+        Invalid Email Address.
       </mat-error>
     </mat-form-field>
     <mat-form-field>

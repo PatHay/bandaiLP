@@ -24,31 +24,31 @@ export class AppComponent {
 
   features: GameFeature[] = [
     {
-      title: '3vs3 Tag/Support',
+      title: 'Atmospheric Visual',
       image:
-        'https://cdn-cms.bnea.io/sites/default/files/styles/game_feature_small/public/games/features/large/dbfightz_ksp1.jpg',
+        'https://cdn-cms.bnea.io/sites/default/files/games/features/large/feature1_3.jpg',
       cols: 5,
       rows: 3,
     },
     {
-      title: 'High-End Anime Graphics',
+      title: 'Interconnected World',
       image:
-        'https://cdn-cms.bnea.io/sites/default/files/styles/game_feature_small/public/games/features/large/feature2_4.jpg',
-      cols: 3,
+        'https://cdn-cms.bnea.io/sites/default/files/styles/game_feature_small/public/games/features/large/feature2_3.jpg',
+      cols: 7,
       rows: 3,
     },
     {
-      title: 'Spectacular Fights',
+      title: 'Sword Action',
       image:
-        'https://cdn-cms.bnea.io/sites/default/files/styles/game_feature_small/public/games/features/large/feature3_4.jpg',
-      cols: 3,
-      rows: 3,
-    },
-    {
-      title: '3vs3 Tag/Support',
-      image:
-        'https://cdn-cms.bnea.io/sites/default/files/styles/game_feature_small/public/games/features/large/dbfightz_ksp1.jpg',
+        'https://cdn-cms.bnea.io/sites/default/files/styles/game_feature_small/public/games/features/large/feature3_3.jpg',
       cols: 5,
+      rows: 3,
+    },
+    {
+      title: 'Unique Online System',
+      image:
+        'https://cdn-cms.bnea.io/sites/default/files/styles/game_feature_small/public/games/features/large/feature4_1.jpg',
+      cols: 7,
       rows: 3,
     },
   ];
@@ -99,19 +99,22 @@ export class AppComponent {
   requirementColumns = ['label', 'min', 'rec'];
 
 
-  // returns an array of last 100 years
+  // returns array of days based on month
   get days(){
-    const days = new Date(new Date().getFullYear(), 1, 0).getDate();
+    var days = new Date(new Date().getFullYear(), 1, 0).getDate();
 
     return Array(days)
     .fill(0)
-    .map((_, index) => days - index)
+    .map((_, index) => (days-index))
     .reverse();
   }
 
-  // Determines whether or not to show video
-  get showVideo(){
-    return this._activatedRoute.snapshot.queryParams.utm_content === 'video';
+  // returns array of last 75 years
+  get years() {
+    return Array(75)
+    .fill(0)
+    .map((_, index) => new Date().getFullYear() - index)
+    .reverse();
   }
 
 
@@ -126,6 +129,9 @@ export class AppComponent {
       birthdate_year: ['', Validators.required],
       subscriptions: [true],
     });
+
+    console.log()
+
   }
 
 }

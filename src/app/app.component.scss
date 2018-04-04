@@ -1,7 +1,7 @@
 @import '~@angular/material/theming';
 
 $config: mat-typography-config();
-$signup-width: 384px;
+$signup-width: 400px;  //global var referenced below in class signup
 
 @mixin cover-fade {
     &::before{
@@ -25,6 +25,8 @@ $signup-width: 384px;
     position: relative;
     flex: 1;
 }
+
+// Below is main content styling +++++++++++++
 
 .content-nav{
     background: #000;
@@ -62,7 +64,7 @@ $signup-width: 384px;
     overflow: scroll;
     overflow-x: hidden;
     position: absolute;
-    top: 52px;
+    top: 50px;
     right: 0;
     left: 0;
     bottom: 0;
@@ -70,10 +72,10 @@ $signup-width: 384px;
 
 .content-header{
     @include cover-fade;
-    background: url(https://cdn-cms.bnea.io/sites/default/files/games/cover-small-desktop/cover-small-desktop_101.jpg) center top;
+    background: url(https://cdn-cms.bnea.io/sites/default/files/games/cover-small-tablet/cover-small-tablet_35.jpg) center top 25%;
     background-size: cover;
     position: relative;
-    padding-bottom: 56.25%;
+    padding-bottom: 75%;
 }
 
 .content-header-video{
@@ -118,9 +120,10 @@ $signup-width: 384px;
 }
 
 .content-features{
-    padding: 16px 24px;
+    padding: 384px 24px;
     margin: auto;
     max-width: 896px;
+    background: url(https://cdn-cms.bnea.io/sites/default/files/games/game-background/game-background_35.jpg) center;
 
     .mat-grid-tile{
         background: rgba(0,0,0,0.3);
@@ -129,7 +132,7 @@ $signup-width: 384px;
 
 .content-features-image{
     @include cover-fade;
-    background-position: center top;
+    background-position: center center;
     position: absolute;
     top: 0;
     right: 0;
@@ -191,7 +194,7 @@ $signup-width: 384px;
     background: #e3672a;
     display: flex;
     align-items: center;
-    height: 96px;
+    height: 100px;
 }
 
 .content-footer-copy{
@@ -199,7 +202,12 @@ $signup-width: 384px;
     text-align: center;
     width: 100%;
 }
+// Above is main content styling +++++++++++++
 
+
+
+
+// Below is styling for side bar registartion +++++++++++++
 .signup{
     background: #fff;
     display: flex;
@@ -232,7 +240,7 @@ $signup-width: 384px;
     flex-direction: column;
     flex: 1;
     padding: 24px 32px 0;
-    min-height: 296px;
+    min-height: 300px;
 }
 
 .signup-birthdate{
@@ -265,7 +273,7 @@ $signup-width: 384px;
 }
 
 .mat-raised-button{
-    height: 56px;
+    height: 50px;
     width: 100%;
 
     &[disabled]{
@@ -276,3 +284,5 @@ $signup-width: 384px;
 .spacer-flex{
     flex: 1;
 }
+
+// Above is styling for side bar registartion +++++++++++++
