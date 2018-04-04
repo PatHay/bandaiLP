@@ -122,11 +122,12 @@ $signup-width: 400px;  //global var referenced below in class signup
 .content-features{
     padding: 384px 24px;
     margin: auto;
-    max-width: 896px;
-    background: url(https://cdn-cms.bnea.io/sites/default/files/games/game-background/game-background_35.jpg) center;
+    background: url(https://cdn-cms.bnea.io/sites/default/files/games/game-background/game-background_35.jpg) center top no-repeat;
 
     .mat-grid-tile{
         background: rgba(0,0,0,0.3);
+        margin: auto;
+        max-width: 896px;  
     }
 }
 

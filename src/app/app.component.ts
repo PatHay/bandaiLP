@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
 
-export interface GameFeature{
+export interface GameFeature {
   title: string;
   image: string;
   cols: number;
   rows: number;
 }
 
-export interface GameRequirement{
+export interface GameRequirement {
   label: string;
   min: string;
   rec?: string;
@@ -20,7 +19,7 @@ export interface GameRequirement{
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   features: GameFeature[] = [
     {
@@ -100,12 +99,12 @@ export class AppComponent {
 
 
   // returns array of days based on month
-  get days(){
-    var days = new Date(new Date().getFullYear(), 1, 0).getDate();
+  get days() {
+    const days = new Date ( new Date().getFullYear(), 1, 0).getDate();
 
     return Array(days)
     .fill(0)
-    .map((_, index) => (days-index))
+    .map((_, index) => (days - index))
     .reverse();
   }
 
@@ -118,9 +117,9 @@ export class AppComponent {
   }
 
 
-  constructor(private _activatedRoute: ActivatedRoute, private _formBuilder: FormBuilder){}
+  constructor( private _formBuilder: FormBuilder ) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.registerForm = this._formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
@@ -129,9 +128,6 @@ export class AppComponent {
       birthdate_year: ['', Validators.required],
       subscriptions: [true],
     });
-
-    console.log()
-
   }
 
 }
